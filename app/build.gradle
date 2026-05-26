@@ -1,9 +1,13 @@
+plugins {
+    id 'com.android.application'
+}
+
 android {
-    namespace 'com.fountainpdl.surffountain'
+    namespace 'com.surffountain.browser'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.fountainpdl.surffountain"
+        applicationId "com.surffountain.browser"
         minSdk 21
         targetSdk 34
         versionCode 1
