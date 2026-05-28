@@ -4,30 +4,39 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
+
+    <!-- Fountain stem white vertical line -->
     <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M20,72 Q35,45 54,60 Q73,75 88,48"
-        android:strokeColor="#10B981"
-        android:strokeWidth="6"
-        android:strokeLineCap="round"/>
-    <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M20,82 Q35,55 54,70 Q73,85 88,58"
+        android:fillColor="#00000000"
         android:strokeColor="#FFFFFF"
         android:strokeWidth="5"
-        android:strokeLineCap="round"/>
+        android:strokeLineCap="round"
+        android:pathData="M54,60 L54,30"/>
+
+    <!-- Arrow top green triangle -->
     <path
         android:fillColor="#10B981"
-        android:pathData="M50,30 L54,20 L58,30 L54,28 Z"/>
+        android:pathData="M54,18 L48,32 L60,32 Z"/>
+
+    <!-- Wave 1 green -->
     <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M54,28 L54,55"
+        android:fillColor="#00000000"
+        android:strokeColor="#10B981"
+        android:strokeWidth="5"
+        android:strokeLineCap="round"
+        android:pathData="M18,68 Q36,48 54,62 Q72,76 90,52"/>
+
+    <!-- Wave 2 white -->
+    <path
+        android:fillColor="#00000000"
         android:strokeColor="#FFFFFF"
         android:strokeWidth="4"
-        android:strokeLineCap="round"/>
-    <circle
+        android:strokeLineCap="round"
+        android:pathData="M18,78 Q36,58 54,72 Q72,86 90,62"/>
+
+    <!-- Red dot at base — small diamond instead of circle -->
+    <path
         android:fillColor="#EF4444"
-        android:cx="54"
-        android:cy="58"
-        android:r="5"/>
+        android:pathData="M54,60 L59,65 L54,70 L49,65 Z"/>
+
 </vector>
