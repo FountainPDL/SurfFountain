@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F0FF">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Privacy &amp; Security" android:textColor="#7C3AED"
+            android:textSize="13sp" android:textStyle="bold" android:layout_marginBottom="8dp"/>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="52dp"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:background="#FFFFFF" android:padding="12dp" android:layout_marginBottom="4dp">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="Block Ads &amp; Trackers" android:textSize="15sp"/>
+            <Switch android:id="@+id/switch_adblock" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="52dp"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:background="#FFFFFF" android:padding="12dp" android:layout_marginBottom="4dp">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="Force HTTPS" android:textSize="15sp"/>
+            <Switch android:id="@+id/switch_https" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="52dp"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:background="#FFFFFF" android:padding="12dp" android:layout_marginBottom="4dp">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="Accept Cookies" android:textSize="15sp"/>
+            <Switch android:id="@+id/switch_cookies" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="52dp"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:background="#FFFFFF" android:padding="12dp" android:layout_marginBottom="16dp">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="JavaScript" android:textSize="15sp"/>
+            <Switch android:id="@+id/switch_js" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Appearance" android:textColor="#7C3AED"
+            android:textSize="13sp" android:textStyle="bold" android:layout_marginBottom="8dp"/>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="52dp"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:background="#FFFFFF" android:padding="12dp" android:layout_marginBottom="4dp">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="Dark Mode" android:textSize="15sp"/>
+            <Switch android:id="@+id/switch_dark" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="52dp"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:background="#FFFFFF" android:padding="12dp" android:layout_marginBottom="16dp">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="Theme" android:textSize="15sp"/>
+            <Spinner android:id="@+id/spinner_theme" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Browser" android:textColor="#7C3AED"
+            android:textSize="13sp" android:textStyle="bold" android:layout_marginBottom="8dp"/>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="52dp"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:background="#FFFFFF" android:padding="12dp" android:layout_marginBottom="4dp">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Search Engine  " android:textSize="15sp"/>
+            <Spinner android:id="@+id/spinner_search" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:background="#FFFFFF" android:padding="12dp" android:layout_marginBottom="4dp">
+            <EditText android:id="@+id/input_homepage" android:layout_width="0dp"
+                android:layout_height="wrap_content" android:layout_weight="1"
+                android:hint="Homepage URL" android:inputType="textUri"/>
+            <Button android:id="@+id/btn_save_homepage"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Save" android:backgroundTint="#7C3AED" android:textColor="#FFFFFF"/>
+        </LinearLayout>
+
+        <Button android:id="@+id/btn_clear_history"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Clear History" android:backgroundTint="#EF4444"
+            android:textColor="#FFFFFF" android:layout_marginTop="16dp"/>
+    </LinearLayout>
+</ScrollView>

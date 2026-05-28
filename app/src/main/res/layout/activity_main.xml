@@ -1,101 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F5F0FF">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <LinearLayout
+        android:id="@+id/toolbar_layout"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#7C3AED">
+        android:background="#7C3AED"
+        android:elevation="8dp">
 
         <LinearLayout
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp">
+            android:layout_height="52dp"
+            android:gravity="center_vertical"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:background="#7C3AED">
+
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_media_rew"
+                android:tint="#FFFFFF" />
+
+            <ImageButton
+                android:id="@+id/btn_forward"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_media_ff"
+                android:tint="#FFFFFF" />
+
+            <ImageButton
+                android:id="@+id/btn_shield"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_secure"
+                android:tint="#10B981" />
 
             <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:gravity="center_vertical"
+                android:layout_width="0dp"
+                android:layout_height="38dp"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
                 android:background="#FFFFFF"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                android:elevation="2dp">
-
-                <ImageButton
-                    android:id="@+id/btn_back"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:src="@android:drawable/ic_media_previous"
-                    android:tint="#7C3AED" />
-
-                <ImageButton
-                    android:id="@+id/btn_forward"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:src="@android:drawable/ic_media_next"
-                    android:tint="#7C3AED"
-                    android:layout_marginStart="4dp" />
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp">
 
                 <EditText
                     android:id="@+id/url_bar"
                     android:layout_width="0dp"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
                     android:background="@android:color/transparent"
-                    android:hint="Search or type URL"
+                    android:hint="Search or enter URL"
                     android:inputType="textUri"
                     android:imeOptions="actionGo"
                     android:maxLines="1"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp"
                     android:textColor="#1F2937"
-                    android:textSize="14sp" />
-
-                <ImageButton
-                    android:id="@+id/btn_reload"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:src="@android:drawable/ic_popup_sync"
-                    android:tint="#10B981" />
-
-                <ImageButton
-                    android:id="@+id/btn_menu"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:src="@android:drawable/ic_menu_more"
-                    android:tint="#EF4444"
-                    android:layout_marginStart="4dp" />
+                    android:textColorHint="#9CA3AF"
+                    android:textSize="13sp" />
             </LinearLayout>
 
-            <ProgressBar
-                android:id="@+id/progress_bar"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:max="100"
-                android:progressTint="#10B981"
-                android:visibility="gone"
-                android:layout_marginTop="4dp"/>
-        </LinearLayout>
-    </com.google.android.material.appbar.AppBarLayout>
+            <ImageButton
+                android:id="@+id/btn_reload"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_popup_sync"
+                android:tint="#10B981" />
 
-    <WebView
-        android:id="@+id/webview"
+            <FrameLayout
+                android:layout_width="40dp"
+                android:layout_height="40dp">
+                <ImageButton
+                    android:id="@+id/btn_tabs"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@android:drawable/ic_menu_agenda"
+                    android:tint="#FFFFFF" />
+                <TextView
+                    android:id="@+id/tab_count"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="top|end"
+                    android:background="#EF4444"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10sp" />
+            </FrameLayout>
+
+            <ImageButton
+                android:id="@+id/btn_menu"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_menu_more"
+                android:tint="#FFFFFF" />
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:max="100"
+            android:progressTint="#10B981"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/web_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:layout_marginTop="72dp" />
+        android:layout_marginTop="55dp">
+
+        <WebView
+            android:id="@+id/webview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/ai_fab"

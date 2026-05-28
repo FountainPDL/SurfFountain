@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="8dp"
+        android:paddingBottom="24dp">
+
+        <TextView android:layout_width="match_parent" android:layout_height="48dp"
+            android:id="@+id/menu_new_tab" android:text="+ New Tab"
+            android:gravity="center_vertical" android:paddingStart="24dp" android:textSize="15sp"
+            android:background="?attr/selectableItemBackground"/>
+        <TextView android:layout_width="match_parent" android:layout_height="48dp"
+            android:id="@+id/menu_new_incognito" android:text="🕵 New Incognito Tab"
+            android:gravity="center_vertical" android:paddingStart="24dp" android:textSize="15sp"
+            android:background="?attr/selectableItemBackground"/>
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E5E7EB" android:layout_marginTop="4dp" android:layout_marginBottom="4dp"/>
+        <TextView android:layout_width="match_parent" android:layout_height="48dp"
+            android:id="@+id/menu_bookmark_page" android:text="⭐ Bookmark This Page"
+            android:gravity="center_vertical" android:paddingStart="24dp" android:textSize="15sp"
+            android:background="?attr/selectableItemBackground"/>
+        <TextView android:layout_width="match_parent" android:layout_height="48dp"
+            android:id="@+id/menu_bookmarks" android:text="📚 Bookmarks"
+            android:gravity="center_vertical" android:paddingStart="24dp" android:textSize="15sp"
+            android:background="?attr/selectableItemBackground"/>
+        <TextView android:layout_width="match_parent" android:layout_height="48dp"
+            android:id="@+id/menu_history" android:text="🕘 History"
+            android:gravity="center_vertical" android:paddingStart="24dp" android:textSize="15sp"
+            android:background="?attr/selectableItemBackground"/>
+        <TextView android:layout_width="match_parent" android:layout_height="48dp"
+            android:id="@+id/menu_downloads" android:text="⬇ Downloads"
+            android:gravity="center_vertical" android:paddingStart="24dp" android:textSize="15sp"
+            android:background="?attr/selectableItemBackground"/>
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E5E7EB" android:layout_marginTop="4dp" android:layout_marginBottom="4dp"/>
+        <TextView android:layout_width="match_parent" android:layout_height="48dp"
+            android:id="@+id/menu_find" android:text="🔍 Find in Page"
+            android:gravity="center_vertical" android:paddingStart="24dp" android:textSize="15sp"
+            android:background="?attr/selectableItemBackground"/>
+        <TextView android:layout_width="match_parent" android:layout_height="48dp"
+            android:id="@+id/menu_reader" android:text="📖 Reader Mode"
+            android:gravity="center_vertical" android:paddingStart="24dp" android:textSize="15sp"
+            android:background="?attr/selectableItemBackground"/>
+        <TextView android:layout_width="match_parent" android:layout_height="48dp"
+            android:id="@+id/menu_desktop" android:text="🖥 Desktop Site"
+            android:gravity="center_vertical" android:paddingStart="24dp" android:textSize="15sp"
+            android:background="?attr/selectableItemBackground"/>
+        <TextView android:layout_width="match_parent" android:layout_height="48dp"
+            android:id="@+id/menu_iframe" android:text="🔗 Extract iFrame / Video URLs"
+            android:gravity="center_vertical" android:paddingStart="24dp" android:textSize="15sp"
+            android:background="?attr/selectableItemBackground"/>
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E5E7EB" android:layout_marginTop="4dp" android:layout_marginBottom="4dp"/>
+        <TextView android:layout_width="match_parent" android:layout_height="48dp"
+            android:id="@+id/menu_share" android:text="📤 Share Page"
+            android:gravity="center_vertical" android:paddingStart="24dp" android:textSize="15sp"
+            android:background="?attr/selectableItemBackground"/>
+        <TextView android:layout_width="match_parent" android:layout_height="48dp"
+            android:id="@+id/menu_copy_url" android:text="📋 Copy URL"
+            android:gravity="center_vertical" android:paddingStart="24dp" android:textSize="15sp"
+            android:background="?attr/selectableItemBackground"/>
+        <TextView android:layout_width="match_parent" android:layout_height="48dp"
+            android:id="@+id/menu_qr" android:text="📷 QR Code"
+            android:gravity="center_vertical" android:paddingStart="24dp" android:textSize="15sp"
+            android:background="?attr/selectableItemBackground"/>
+        <TextView android:layout_width="match_parent" android:layout_height="48dp"
+            android:id="@+id/menu_print" android:text="🖨 Print"
+            android:gravity="center_vertical" android:paddingStart="24dp" android:textSize="15sp"
+            android:background="?attr/selectableItemBackground"/>
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E5E7EB" android:layout_marginTop="4dp" android:layout_marginBottom="4dp"/>
+        <TextView android:layout_width="match_parent" android:layout_height="48dp"
+            android:id="@+id/menu_settings" android:text="⚙ Settings"
+            android:gravity="center_vertical" android:paddingStart="24dp" android:textSize="15sp"
+            android:background="?attr/selectableItemBackground"/>
+    </LinearLayout>
+</ScrollView>
