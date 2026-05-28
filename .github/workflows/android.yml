@@ -28,6 +28,37 @@ jobs:
       - name: Write local.properties
         run: echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
 
+      - name: Generate launcher PNG icons
+        run: |
+          sudo apt-get install -y imagemagick
+          mkdir -p app/src/main/res/mipmap-mdpi
+          mkdir -p app/src/main/res/mipmap-hdpi
+          mkdir -p app/src/main/res/mipmap-xhdpi
+          mkdir -p app/src/main/res/mipmap-xxhdpi
+          mkdir -p app/src/main/res/mipmap-xxxhdpi
+          convert -size 48x48 xc:#7C3AED \
+            -fill white -draw "roundrectangle 4,4 44,44 8,8" \
+            app/src/main/res/mipmap-mdpi/ic_launcher.png
+          convert -size 48x48 xc:#7C3AED \
+            -fill white -draw "circle 24,24 24,10" \
+            app/src/main/res/mipmap-mdpi/ic_launcher_round.png
+          convert app/src/main/res/mipmap-mdpi/ic_launcher.png \
+            -resize 72x72 app/src/main/res/mipmap-hdpi/ic_launcher.png
+          convert app/src/main/res/mipmap-mdpi/ic_launcher_round.png \
+            -resize 72x72 app/src/main/res/mipmap-hdpi/ic_launcher_round.png
+          convert app/src/main/res/mipmap-mdpi/ic_launcher.png \
+            -resize 96x96 app/src/main/res/mipmap-xhdpi/ic_launcher.png
+          convert app/src/main/res/mipmap-mdpi/ic_launcher_round.png \
+            -resize 96x96 app/src/main/res/mipmap-xhdpi/ic_launcher_round.png
+          convert app/src/main/res/mipmap-mdpi/ic_launcher.png \
+            -resize 144x144 app/src/main/res/mipmap-xxhdpi/ic_launcher.png
+          convert app/src/main/res/mipmap-mdpi/ic_launcher_round.png \
+            -resize 144x144 app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png
+          convert app/src/main/res/mipmap-mdpi/ic_launcher.png \
+            -resize 192x192 app/src/main/res/mipmap-xxxhdpi/ic_launcher.png
+          convert app/src/main/res/mipmap-mdpi/ic_launcher_round.png \
+            -resize 192x192 app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png
+
       - name: Download Gradle wrapper jar
         run: |
           mkdir -p gradle/wrapper
