@@ -28,36 +28,73 @@ jobs:
       - name: Write local.properties
         run: echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
 
-      - name: Generate launcher PNG icons
+      - name: Generate launcher PNG icons with Python
         run: |
-          sudo apt-get install -y imagemagick
-          mkdir -p app/src/main/res/mipmap-mdpi
-          mkdir -p app/src/main/res/mipmap-hdpi
-          mkdir -p app/src/main/res/mipmap-xhdpi
-          mkdir -p app/src/main/res/mipmap-xxhdpi
-          mkdir -p app/src/main/res/mipmap-xxxhdpi
-          convert -size 48x48 xc:#7C3AED \
-            -fill white -draw "roundrectangle 4,4 44,44 8,8" \
-            app/src/main/res/mipmap-mdpi/ic_launcher.png
-          convert -size 48x48 xc:#7C3AED \
-            -fill white -draw "circle 24,24 24,10" \
-            app/src/main/res/mipmap-mdpi/ic_launcher_round.png
-          convert app/src/main/res/mipmap-mdpi/ic_launcher.png \
-            -resize 72x72 app/src/main/res/mipmap-hdpi/ic_launcher.png
-          convert app/src/main/res/mipmap-mdpi/ic_launcher_round.png \
-            -resize 72x72 app/src/main/res/mipmap-hdpi/ic_launcher_round.png
-          convert app/src/main/res/mipmap-mdpi/ic_launcher.png \
-            -resize 96x96 app/src/main/res/mipmap-xhdpi/ic_launcher.png
-          convert app/src/main/res/mipmap-mdpi/ic_launcher_round.png \
-            -resize 96x96 app/src/main/res/mipmap-xhdpi/ic_launcher_round.png
-          convert app/src/main/res/mipmap-mdpi/ic_launcher.png \
-            -resize 144x144 app/src/main/res/mipmap-xxhdpi/ic_launcher.png
-          convert app/src/main/res/mipmap-mdpi/ic_launcher_round.png \
-            -resize 144x144 app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png
-          convert app/src/main/res/mipmap-mdpi/ic_launcher.png \
-            -resize 192x192 app/src/main/res/mipmap-xxxhdpi/ic_launcher.png
-          convert app/src/main/res/mipmap-mdpi/ic_launcher_round.png \
-            -resize 192x192 app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png
+          python3 - << 'PYEOF'
+          import os
+          import struct
+          import zlib
+
+          def make_png(size, r, g, b):
+              def chunk(name, data):
+                  c = zlib.crc32(name + data) & 0xffffffff
+                  return struct.pack('>I', len(data)) + name + data + struct.pack('>I', c)
+              ihdr = struct.pack('>IIBBBBB', size, size, 8, 2, 0, 0, 0)
+              raw = b''
+              for y in range(size):
+                  raw += b'\x00'
+                  for x in range(size):
+                      cx, cy = size // 2, size // 2
+                      radius = size // 2 - 2
+                      dist = ((x - cx) ** 2 + (y - cy) ** 2) ** 0.5
+                      if dist <= radius:
+                          raw += bytes([r, g, b])
+                      else:
+                          raw += bytes([0, 0, 0])
+              compressed = zlib.compress(raw)
+              png = (b'\x89PNG\r\n\x1a\n'
+                     + chunk(b'IHDR', ihdr)
+                     + chunk(b'IDAT', compressed)
+                     + chunk(b'IEND', b''))
+              return png
+
+          def make_rect_png(size, r, g, b):
+              def chunk(name, data):
+                  c = zlib.crc32(name + data) & 0xffffffff
+                  return struct.pack('>I', len(data)) + name + data + struct.pack('>I', c)
+              ihdr = struct.pack('>IIBBBBB', size, size, 8, 2, 0, 0, 0)
+              raw = b''
+              for y in range(size):
+                  raw += b'\x00'
+                  for x in range(size):
+                      raw += bytes([r, g, b])
+              compressed = zlib.compress(raw)
+              png = (b'\x89PNG\r\n\x1a\n'
+                     + chunk(b'IHDR', ihdr)
+                     + chunk(b'IDAT', compressed)
+                     + chunk(b'IEND', b''))
+              return png
+
+          sizes = {
+              'mipmap-mdpi':    48,
+              'mipmap-hdpi':    72,
+              'mipmap-xhdpi':   96,
+              'mipmap-xxhdpi':  144,
+              'mipmap-xxxhdpi': 192,
+          }
+
+          pr, pg, pb = 0x7C, 0x3A, 0xED
+
+          for folder, size in sizes.items():
+              path = f'app/src/main/res/{folder}'
+              os.makedirs(path, exist_ok=True)
+              with open(f'{path}/ic_launcher.png', 'wb') as f:
+                  f.write(make_rect_png(size, pr, pg, pb))
+              with open(f'{path}/ic_launcher_round.png', 'wb') as f:
+                  f.write(make_png(size, pr, pg, pb))
+
+          print('Icons generated successfully')
+          PYEOF
 
       - name: Download Gradle wrapper jar
         run: |
